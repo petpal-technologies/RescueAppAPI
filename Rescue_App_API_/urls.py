@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include # new
+
 
 from rest_framework.authtoken import views as rest_framework_views
 from rest_framework import routers
@@ -28,7 +30,8 @@ from PetPosts import views as petView
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    url('hello/', Userview.HelloView.as_view(), name='hello'),
     url('auth/login/', obtain_auth_token, name='api_token_auth'),
     url('sayHi/', petView.SayHiBasic.as_view(), name="sayHi"),
+
+    url('accounts/', include('django.contrib.auth.urls')),
 ]

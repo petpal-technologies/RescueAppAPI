@@ -4,9 +4,8 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from .. import helper
 
 class CustomUser(AbstractUser):
-    # add additional fields in here
-
-    def __str__(self):
-        return self.email
+    # add additional fields in here\
+    hash_id = models.CharField(max_length=32, default=helper.create_hash, unique=True)
