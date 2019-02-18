@@ -18,7 +18,7 @@ class AddPetPost(APIView):
         return Response({"title": "blah"})
 
 
-
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = PetPost.objects.all()
-    serializer_class = PostSerializer
+#
+# class PostViewSet(viewsets.ModelViewSet):
+#     queryset = PetPost.objects.all()
+#     serializer_class = PostSerializer
