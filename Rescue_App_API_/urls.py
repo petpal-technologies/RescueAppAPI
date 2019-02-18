@@ -26,11 +26,9 @@ from Users import views as Userview
 from PetPosts import views as petView
 
 router = routers.DefaultRouter()
-router.register('api/posts', petView.AddPetPost,base_name="PetPostModel")
 
 urlpatterns = [
     url('hello/', Userview.HelloView.as_view(), name='hello'),
     url('auth/login/', obtain_auth_token, name='api_token_auth'),
     url('sayHi/', petView.SayHiBasic.as_view(), name="sayHi"),
 ]
-urlpatterns += router.urls
