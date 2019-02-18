@@ -13,9 +13,9 @@ class SayHiBasic(APIView):
         return Response(content)
 
 
-class AddPetPost(APIView):
-    def add(self, data):
-        return Response({"title": "blah"})
+# class AddPetPost(APIView):
+#     def add(self, data):
+#         return Response({"title": "blah"})
 
 
 #
