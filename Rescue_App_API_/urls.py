@@ -28,6 +28,6 @@ from PetPosts import views as petView
 urlpatterns = [
     url('hello/', Userview.HelloView.as_view(), name='hello'),
     url('auth/login/', obtain_auth_token, name='api_token_auth'),
-    url('sayHi/', petView.SayHiBasic(), name="sayHi")
+    url('sayHi/', petView.SayHiBasic.as_view(), name="sayHi")
 
 ]
