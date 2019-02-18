@@ -13,3 +13,5 @@ class HelloView(APIView):
     def get(self, request):
         content = {'message': 'Hello, World!'}
         return Response(content)
+
+

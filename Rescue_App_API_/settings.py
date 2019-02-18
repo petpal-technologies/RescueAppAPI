@@ -83,7 +83,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'PetPosts'
+    'Users.apps.UsersConfig'
 ]
+
+AUTH_USER_MODEL = 'Users.CustomUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
