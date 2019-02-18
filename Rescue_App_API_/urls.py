@@ -24,6 +24,8 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from Users import views as Userview
 from PetPosts import views as petView
+from Users import views
+
 
 router = routers.DefaultRouter()
 
@@ -32,5 +34,9 @@ urlpatterns = [
 
     url('sayHi/', petView.SayHiBasic.as_view(), name="sayHi"),
 
-    url('accounts/', include('django.contrib.auth.urls')),
+    # url('accounts/', include('django.contrib.auth.urls')),
+
+    url('login', views.auth_login),
+    url('logout', views.auth_logout),
+    url('signup', views.signup),
 ]
