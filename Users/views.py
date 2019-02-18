@@ -38,10 +38,10 @@ def signup(request):
 
      - If username does not already exist we create and authenticate new account
     """
-    if models.User.objects.filter(username=request.POST['username']).exists():
+    if models.CustomUser.objects.filter(username=request.POST['username']).exists():
         return HttpResponse(status=403)
     else:
-        u = models.User(username=request.POST['username'])
+        u = models.CustomUser(username=request.POST['username'])
         u.set_password(request.POST['password'])
         u.save()
         login(request, u)
