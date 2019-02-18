@@ -22,9 +22,12 @@ from django.conf.urls.static import static
 from rest_framework.authtoken import views as rest_framework_views
 
 from rest_framework.authtoken.views import obtain_auth_token
-from Users import views
+from Users import views as Userview
+from PetPosts import views as petView
 
 urlpatterns = [
-    url('hello/', views.HelloView.as_view(), name='hello'),
+    url('hello/', Userview.HelloView.as_view(), name='hello'),
     url('auth/login/', obtain_auth_token, name='api_token_auth'),
+    url('sayHi/', petView.SayHiBasic, name="sayHi")
+
 ]
