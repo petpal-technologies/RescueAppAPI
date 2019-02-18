@@ -4,7 +4,7 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from .. import helper
+from Rescue_App_API_ import helper
 
 class CustomUser(AbstractUser):
     # add additional fields in here\
