@@ -36,7 +36,7 @@ urlpatterns = [
 
     # url('accounts/', include('django.contrib.auth.urls')),
 
-    url('login', views.auth_login),
-    url('logout', views.auth_logout),
-    url('signup', views.signup),
+    url('auth/login', views.auth_login),
+    url('auth/logout', views.auth_logout),
+    url('auth/signup', views.signup),
 ]
