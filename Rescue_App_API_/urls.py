@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from rest_framework.authtoken import views as rest_framework_views
 
 from rest_framework.authtoken.views import obtain_auth_token
-from Rescue_App_API_.Users import views
+from Users import views
 
 urlpatterns = [
     url('hello/', views.HelloView.as_view(), name='hello'),
