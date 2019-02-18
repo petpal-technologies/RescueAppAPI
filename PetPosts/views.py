@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 
 # from PetPosts.models import PetPost
-from PetPosts.serializers import PostSerializer
+#from PetPosts.serializers import PostSerializer
 # Create your views here.
 
 class SayHiBasic(APIView):
