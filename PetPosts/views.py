@@ -20,8 +20,6 @@ class PostView(APIView):
     def post(self, request):
         post = request.data.get('post')
 
-        return Response({"post": post})
-
         serializer = PostSerializer(data=post)
         if serializer.is_valid(raise_exception=True):
             saved_post = serializer.save()
