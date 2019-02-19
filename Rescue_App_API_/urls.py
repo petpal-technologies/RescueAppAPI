@@ -33,7 +33,7 @@ urlpatterns = [
     url('auth/signup', views.signup),
 
 
-    url('api/new_post', petView.PostView),
+    url('api/new_post', petView.PostView.post),
     url('api/delete', petView.PostView.delete),
     url('api/getPosts', petView.PostView.get)
 ]
