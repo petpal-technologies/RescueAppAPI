@@ -8,8 +8,11 @@ from PetPosts.serializers import PostSerializer
 
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 
+
+# Create your views here.
+@csrf_exempt
 class PostView(APIView):
     def get(self, request):
         posts = PetPost.objects.all()
