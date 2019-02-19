@@ -14,7 +14,6 @@ class PostSerializer(serializers.Serializer):
     location_description = serializers.CharField()
     created = serializers.DateTimeField()
     modified = serializers.DateTimeField()
-    author_id = serializers.CharField()
 
     def create(self, validated_data):
         return PetPost.objects.create(**validated_data)
