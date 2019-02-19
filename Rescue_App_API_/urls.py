@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 
 from django.conf.urls import url
-
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers
 from PetPosts import views as petView
 from Users import views
+
 
 
 router = routers.DefaultRouter()
@@ -33,7 +34,7 @@ urlpatterns = [
     url('auth/signup', views.signup),
 
 
-    url('api/new_post', petView.PostView.post),
+    url('api/new_post', csrf_exempt(petView.PostView.post)),
     url('api/delete', petView.PostView.delete),
     url('api/getPosts', petView.PostView.get)
 ]
