@@ -34,10 +34,6 @@ def auth_login(request):
 
 @csrf_exempt
 def signup(request):
-    """Client attempts to sign up
-
-     - If username does not already exist we create and authenticate new account
-    """
     if models.CustomUser.objects.filter(username=request.POST['username']).exists():
         return HttpResponse(status=403)
     else:

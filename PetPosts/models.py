@@ -17,4 +17,13 @@ class PetPost(models.Model):
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
 
-# for future, implement a replies class
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
+    # for future, implement a replies class

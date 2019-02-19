@@ -6,20 +6,33 @@ from rest_framework import viewsets
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
 
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
-class SayHiBasic(APIView):
+class PostView(APIView):
     def get(self, request):
-        content = {'message': 'Hello, World!'}
-        return Response(content)
+        posts = PetPost.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response({"posts": serializer.data})
+
+    def create(self, request):
+        post = request.data.get('post')
+
+        serializer = PostSerializer(data=post)
+        if serializer.is_valid(raise_exception=True):
+            saved_post = serializer.save()
+            return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
+        else:
+            return Response({"failure": "Post failed"})
+
+    def delete(self, request, pk):
+        # Get object with this pk
+        post = get_object_or_404(PetPost.objects.all(), pk=pk)
+        post.delete()
+        return Response({"message": "Post with id `{}` has been deleted.".format(pk)}, status=204)
 
 
-class AddPetPost(APIView):
-    def add(self, data):
-        return Response({"title": "blah"})
-
-
-
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = PetPost.objects.all()
-    serializer_class = PostSerializer
+# class PostViewSet(viewsets.ModelViewSet):
+#     queryset = PetPost.objects.all()
+#     serializer_class = PostSerializer

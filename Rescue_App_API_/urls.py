@@ -15,14 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 
-from django.conf.urls import url, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls import url
 
-from rest_framework.authtoken import views as rest_framework_views
 from rest_framework import routers
-from rest_framework.authtoken.views import obtain_auth_token
-from Users import views as Userview
 from PetPosts import views as petView
 from Users import views
 
@@ -31,12 +26,14 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     # url('auth/login/', obtain_auth_token, name='api_token_auth'),
-
-    url('sayHi/', petView.SayHiBasic.as_view(), name="sayHi"),
-
     # url('accounts/', include('django.contrib.auth.urls')),
 
     url('auth/login', views.auth_login),
     url('auth/logout', views.auth_logout),
     url('auth/signup', views.signup),
+
+
+    url('/api/new_post', petView.PostView.create),
+    url('/api/delete', petView.PostView.delete),
+    url('/api/getPosts', petView.PostView.get)
 ]
