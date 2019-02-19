@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 class PostView(APIView):
-    def get(self, request):
+    def get(self):
         posts = PetPost.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response({"posts": serializer.data})
