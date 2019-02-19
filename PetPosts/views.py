@@ -20,7 +20,7 @@ class PostView(APIView):
     def post(self, request):
         post = request.data.get('post')
 
-        return Response({"failure": request.data})
+        return Response({"post": post})
 
         serializer = PostSerializer(data=post)
         if serializer.is_valid(raise_exception=True):
