@@ -6,7 +6,7 @@ from Rescue_App_API_ import settings
 
 class PostSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
-    post_id = serializers.CharField(max_length=255, blank=True)
+    post_id = serializers.CharField(max_length=255)
     lat = serializers.FloatField()
     long = serializers.FloatField()
     image_link = serializers.CharField()
