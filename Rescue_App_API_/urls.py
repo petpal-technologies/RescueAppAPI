@@ -35,5 +35,5 @@ urlpatterns = [
 
     url('api/new_post', petView.PostView),
     url('api/delete', petView.PostView.delete),
-    url('api/getPosts', petView.PostView.as_view())
+    url('api/getPosts', petView.PostView.get)
 ]
