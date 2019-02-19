@@ -34,7 +34,7 @@ urlpatterns = [
     url('auth/signup', views.signup),
 
 
-    url('api/new_post', csrf_exempt(petView.PostView)),
-    url('api/delete', petView.PostView.delete),
-    url('api/getPosts', petView.PostView.get)
+    url('api/new_post', csrf_exempt(petView.PostView.as_view())),
+    url('api/delete', csrf_exempt(petView.PostView.as_view())),
+    url('api/getPosts', csrf_exempt(petView.PostView.as_view()))
 ]
