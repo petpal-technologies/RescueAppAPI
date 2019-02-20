@@ -5,9 +5,8 @@ from rest_framework import viewsets
 
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
-
 from django.shortcuts import get_object_or_404
-
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -19,10 +18,11 @@ class PostView(APIView):
 
     def post(self, request):
         post = request.data.get('post')
+        User.objects.get()
 
         serializer = PostSerializer(data=post)
         if serializer.is_valid(raise_exception=True):
-            saved_post = serializer.save()
+            saved_post = serializer.save(user=request.user)
             return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
         else:
             return Response({"failure": "Post failed"})
