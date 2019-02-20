@@ -7,9 +7,13 @@ from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
 from django.shortcuts import get_object_or_404
 
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
 from Users.models import CustomUser
 
 # Create your views here.
+@method_decorator(csrf_exempt, name='dispatch')
 class PostView(APIView):
     def get(self, request):
         posts = PetPost.objects.all()
