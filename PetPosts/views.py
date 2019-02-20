@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
@@ -10,22 +11,23 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+
 from Users.models import CustomUser
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
 class PostView(APIView):
+
+    parser_classes = (JSONParser, MultiPartParser, FormParser, )
+
     def get(self, request):
         posts = PetPost.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response({"posts": serializer.data})
 
     @csrf_exempt
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         post = request.data.get('post')
-
-        return Response({"Serializer": request.data.get('post')})
-
         serializer = PostSerializer(data=post)
         # current_user = CustomUser(serializer.user_id)
         if serializer.is_valid(raise_exception=True):
