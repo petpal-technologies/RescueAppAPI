@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import mixins, generics
 
@@ -10,9 +8,6 @@ from django.shortcuts import get_object_or_404
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
-
-from Users.models import CustomUser
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
@@ -29,7 +24,6 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
     @csrf_exempt
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
-
         # post = request.data.get('post')
         # serializer = PostSerializer(data=post)
         # if serializer.is_valid(raise_exception=True):
@@ -43,8 +37,3 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
         post = get_object_or_404(PetPost.objects.all(), pk=pk)
         post.delete()
         return Response({"message": "Post with id `{}` has been deleted.".format(pk)}, status=204)
-
-
-# class PostViewSet(viewsets.ModelViewSet):
-#     queryset = PetPost.objects.all()
-#     serializer_class = PostSerializer
