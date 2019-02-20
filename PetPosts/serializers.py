@@ -17,7 +17,7 @@ class PostSerializer(serializers.Serializer):
     # user = serializers.models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def create(self, validated_data):
-        return PetPost.objects.create(user=self.user)
+        return PetPost.objects.create(**validated_data)
 
     # class Meta:
     #     model = PetPost
