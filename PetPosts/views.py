@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, mixins
+from rest_framework import mixins, generics
 
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
@@ -16,7 +16,7 @@ from Users.models import CustomUser
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class PostView(APIView, mixins.CreateModelMixin):
+class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
     serializer_class = PostSerializer
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     queryset = PetPost.objects.all()
