@@ -12,8 +12,8 @@ class PostSerializer(serializers.Serializer):
     image = serializers.ImageField()
     description = serializers.CharField()
     location_description = serializers.CharField()
-    # created = serializers.DateTimeField()
-    # modified = serializers.DateTimeField()
+    created = serializers.DateTimeField()
+    modified = serializers.DateTimeField()
 
     def create(self, validated_data):
         return PetPost.objects.create(**validated_data)
