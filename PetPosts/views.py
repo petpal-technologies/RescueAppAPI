@@ -26,7 +26,6 @@ class PostView(APIView):
 
         serializer = PostSerializer(data=post)
         # current_user = CustomUser(serializer.user_id)
-        return Response({"Serializer": serializer})
 
         if serializer.is_valid(raise_exception=True):
             saved_post = serializer.save()
