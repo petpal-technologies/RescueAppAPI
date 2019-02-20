@@ -15,9 +15,9 @@ class PostSerializer(serializers.Serializer):
     created = serializers.DateTimeField()
     modified = serializers.DateTimeField()
 
-    def create(self, validated_data):
-        return PetPost.objects.create(**validated_data)
+    # def create(self, validated_data):
+    #     return PetPost.objects.create(**validated_data)
 
-    # class Meta:
-    #     model = PetPost
-    #     fields = ('title', 'post_id', 'user', 'lat', 'long','image_link','description','location_description','created','modified')
+    class Meta:
+        model = PetPost
+        fields = ('title', 'post_id', 'lat', 'long','image','description','location_description','created','modified')
