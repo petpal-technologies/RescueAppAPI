@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
@@ -16,9 +16,10 @@ from Users.models import CustomUser
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class PostView(APIView):
-
-    parser_classes = (JSONParser, MultiPartParser, FormParser, )
+class PostView(APIView, mixins.CreateModelMixin):
+    serializer_class = PostSerializer
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
+    queryset = PetPost.objects.all()
 
     def get(self, request):
         posts = PetPost.objects.all()
@@ -27,14 +28,15 @@ class PostView(APIView):
 
     @csrf_exempt
     def post(self, request, *args, **kwargs):
-        post = request.data.get('post')
-        serializer = PostSerializer(data=post)
-        # current_user = CustomUser(serializer.user_id)
-        if serializer.is_valid(raise_exception=True):
-            saved_post = serializer.save()
-            return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
-        else:
-            return Response({"failure": "Post failed"})
+        return self.create(request, *args, **kwargs)
+
+        # post = request.data.get('post')
+        # serializer = PostSerializer(data=post)
+        # if serializer.is_valid(raise_exception=True):
+        #     saved_post = serializer.save()
+        #     return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
+        # else:
+        #     return Response({"failure": "Post failed"})
 
     def delete(self, request, pk):
         # Get object with this pk
