@@ -4,7 +4,7 @@ from PetPosts.models import PetPost
 from Rescue_App_API_ import settings
 
 
-class PostSerializer(serializers.Serializer):
+class PostSerializer(serializers.ModelSerializer):
     # title = serializers.CharField(max_length=255)
     # post_id = serializers.CharField(max_length=255)
     # lat = serializers.FloatField()
