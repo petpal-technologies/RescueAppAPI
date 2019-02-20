@@ -9,12 +9,11 @@ class PostSerializer(serializers.Serializer):
     post_id = serializers.CharField(max_length=255)
     lat = serializers.FloatField()
     long = serializers.FloatField()
-    image_link = serializers.CharField()
+    image = serializers.ImageField()
     description = serializers.CharField()
     location_description = serializers.CharField()
     created = serializers.DateTimeField()
     modified = serializers.DateTimeField()
-    # user = serializers.models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def create(self, validated_data):
         return PetPost.objects.create(**validated_data)

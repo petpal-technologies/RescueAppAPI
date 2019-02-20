@@ -11,7 +11,7 @@ class PetPost(models.Model):
     post_id              = models.CharField(max_length=255, blank=True)
     lat                  = models.FloatField()
     long                 = models.FloatField()
-    image_link           = models.TextField()
+    image                = models.ImageField()
     description          = models.TextField()
     location_description = models.TextField()
     created              = models.DateTimeField(auto_now=True)
