@@ -6,8 +6,8 @@ from rest_framework import viewsets
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User
 
+from Users.models import CustomUser
 
 # Create your views here.
 class PostView(APIView):
@@ -18,7 +18,6 @@ class PostView(APIView):
 
     def post(self, request):
         post = request.data.get('post')
-        User.objects.get()
 
         serializer = PostSerializer(data=post)
         if serializer.is_valid(raise_exception=True):
