@@ -20,6 +20,7 @@ class PostView(APIView):
         serializer = PostSerializer(posts, many=True)
         return Response({"posts": serializer.data})
 
+    @csrf_exempt
     def post(self, request):
         post = request.data.get('post')
 
