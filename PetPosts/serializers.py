@@ -14,7 +14,6 @@ class PostSerializer(serializers.Serializer):
     location_description = serializers.CharField()
     created = serializers.DateTimeField()
     modified = serializers.DateTimeField()
-    user_id = serializers.CharField()
     # user = serializers.models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def create(self, validated_data):

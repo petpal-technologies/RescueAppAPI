@@ -24,11 +24,11 @@ class PostView(APIView):
     def post(self, request):
         post = request.data.get('post')
         serializer = PostSerializer(data=post)
-
-        current_user = CustomUser(serializer.user_id)
+        return Response({"Serializer": serializer})
+        # current_user = CustomUser(serializer.user_id)
 
         if serializer.is_valid(raise_exception=True):
-            saved_post = serializer.save(user=current_user)
+            saved_post = serializer.save()
             return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
         else:
             return Response({"failure": "Post failed"})
