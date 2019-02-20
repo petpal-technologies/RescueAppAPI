@@ -6,7 +6,7 @@ from Rescue_App_API_ import settings
 # Create your models here.
 
 class PetPost(models.Model):
-    user                 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user                 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     title                = models.CharField(max_length=255)
     post_id              = models.CharField(max_length=255, blank=True)
     lat                  = models.FloatField()
