@@ -24,7 +24,7 @@ class PostView(APIView):
     def post(self, request):
         post = request.data.get('post')
         serializer = PostSerializer(data=post)
-        # return Response({"Serializer": serializer})
+        return Response({"Serializer": serializer})
         # current_user = CustomUser(serializer.user_id)
 
         if serializer.is_valid(raise_exception=True):
