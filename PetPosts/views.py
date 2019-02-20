@@ -23,8 +23,8 @@ class PostView(APIView):
     @csrf_exempt
     def post(self, request):
         post = request.data.get('post')
-        return Response({"Post ": post, "Request": request })
         serializer = PostSerializer(data=post)
+
         if serializer.is_valid(raise_exception=True):
             saved_post = serializer.save(user=request.user)
             return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
