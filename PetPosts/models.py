@@ -14,8 +14,6 @@ class PetPost(models.Model):
     image                = models.ImageField(upload_to="posts/images/", null=True, blank=True)
     description          = models.TextField()
     location_description = models.TextField()
-    created              = models.DateTimeField(auto_now=True)
-    modified             = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
