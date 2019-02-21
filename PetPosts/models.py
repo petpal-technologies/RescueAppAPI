@@ -24,7 +24,7 @@ class PetPost(models.Model):
     location_description = models.TextField()
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
-    uuid                 = models.CharField(max_length=32, null=True, blank=True)
+    uuid                 = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
 
 
     def __str__(self):
