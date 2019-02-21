@@ -24,6 +24,8 @@ class PetPost(models.Model):
     location_description = models.TextField()
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
+    uuid                 = models.CharField(max_length=32)
+
 
     def __str__(self):
         return self.title
