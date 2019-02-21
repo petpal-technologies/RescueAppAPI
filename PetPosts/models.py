@@ -9,7 +9,7 @@ import uuid
 
 def get_upload_to(instance, filename):
     instance.uuid = uuid.uuid4().hex
-    return 'posts/%s/%s' % (instance.uuid, filename)
+    return 'static/media/%s/%s' % (instance.uuid, filename)
 
 
 class PetPost(models.Model):
