@@ -20,7 +20,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers
 from PetPosts import views as petView
 from Users import views
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 router = routers.DefaultRouter()
@@ -38,3 +39,5 @@ urlpatterns = [
     url('api/delete', csrf_exempt(petView.PostView.as_view())),
     url('api/getPosts', csrf_exempt(petView.PostView.as_view()))
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
