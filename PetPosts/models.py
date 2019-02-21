@@ -16,7 +16,6 @@ class PetPost(models.Model):
 
     user                 = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     title                = models.CharField(max_length=255)
-    post_id              = models.CharField(max_length=255, blank=True)
     lat                  = models.FloatField()
     long                 = models.FloatField()
     image                = models.ImageField(upload_to=get_upload_to, null=True, blank=True)
@@ -24,7 +23,7 @@ class PetPost(models.Model):
     location_description = models.TextField()
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
-    uuid                 = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    id                   = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
 
 
     def __str__(self):
