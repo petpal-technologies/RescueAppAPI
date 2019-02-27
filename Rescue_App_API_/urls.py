@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 
 from django.conf.urls import url
-from django.urls import include
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers
 from PetPosts import views as petView
