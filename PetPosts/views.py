@@ -39,7 +39,6 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
         return Response({"message": "Post with id `{}` has been deleted.".format(pk)}, status=204)
 
 
-    def single_post_view(self, request, post_id):
-        post = PetPost.objects.get(id=post_id)
-
-        return render_to_response('single_post.html', {'post': post})
+def single_post_view(request, post_id):
+    post = PetPost.objects.get(id=post_id)
+    return render_to_response('single_post.html', {'post': post})

@@ -42,7 +42,7 @@ urlpatterns = [
     url('api/getPosts', csrf_exempt(petView.PostView.as_view())),
 
 
-    url(r'^post/(?P<post_id>\d+)/$', petView.PostView.single_post_view, name='single_post_view'),
+    url(r'^post/(?P<post_id>\d+)/$', petView.single_post_view, name='single_post_view'),
 
 ]
 
