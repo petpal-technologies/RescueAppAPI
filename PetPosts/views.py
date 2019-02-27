@@ -1,12 +1,11 @@
-from django.template import RequestContext
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.response import Response
 from rest_framework import mixins, generics
 
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
-from django.shortcuts import get_object_or_404, render_to_response
 
+from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
