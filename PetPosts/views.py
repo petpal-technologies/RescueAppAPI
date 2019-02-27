@@ -42,4 +42,4 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
     def single_post_view(self, request, post_id):
         post = PetPost.objects.get(id=post_id)
 
-        return render_to_response('single_post.html', {'post': post, 'PetPost': PetPost})
+        return render_to_response('single_post.html', {'post': post})
