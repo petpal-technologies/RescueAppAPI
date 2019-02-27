@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.response import Response
 from rest_framework import mixins, generics
@@ -40,5 +41,9 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
 
 
 def single_post_view(request, post_id):
-    post = PetPost.objects.get(id=post_id)
+    try:
+        post = get_object_or_404(PetPost, id=post_id)
+    except ValueError:
+        raise Http404
+
     return render_to_response('single_post.html', {'post': post})
