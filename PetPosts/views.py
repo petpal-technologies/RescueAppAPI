@@ -1,10 +1,11 @@
+from django.template import RequestContext
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.response import Response
 from rest_framework import mixins, generics
 
 from PetPosts.models import PetPost
 from PetPosts.serializers import PostSerializer
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -37,3 +38,9 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
         post = get_object_or_404(PetPost.objects.all(), pk=pk)
         post.delete()
         return Response({"message": "Post with id `{}` has been deleted.".format(pk)}, status=204)
+
+
+    def single_post_view(self, request, post_id):
+        post = PetPost.objects.get(id=post_id)
+
+        return render_to_response('single_post.html', {'post': post, 'PetPost': PetPost})

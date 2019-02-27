@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 
 from django.conf.urls import url
+from django.urls import include
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers
 from PetPosts import views as petView
@@ -24,11 +25,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
+
 router = routers.DefaultRouter()
 
 urlpatterns = [
     # url('auth/login/', obtain_auth_token, name='api_token_auth'),
     # url('accounts/', include('django.contrib.auth.urls')),
+    # url('^accounts/', include('allauth.urls')),
 
     url('auth/login', views.auth_login),
     url('auth/logout', views.auth_logout),
@@ -37,7 +40,11 @@ urlpatterns = [
 
     url('api/new_post', csrf_exempt(petView.PostView.as_view())),
     url('api/delete', csrf_exempt(petView.PostView.as_view())),
-    url('api/getPosts', csrf_exempt(petView.PostView.as_view()))
+    url('api/getPosts', csrf_exempt(petView.PostView.as_view())),
+
+
+    url(r'^post/(?P<post_id>\d+)/$', petView.PostView.single_post_view, name='public_post_view'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
