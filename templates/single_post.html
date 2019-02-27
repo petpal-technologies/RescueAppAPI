@@ -1,1 +1,23 @@
-{% block post %}{{ post.title }}{% endblock post %}
+{% block post %}
+
+
+    {{ post.title }}
+    {{ post.description }}
+
+
+
+{% endblock post %}
+
+<p>
+    <p>Lat, long</p>
+
+    {% block post %}
+
+        {{ post.lat }}
+        {{ post.long }}
+
+    {% endblock post %}
+
+</p>
+
+</span>
