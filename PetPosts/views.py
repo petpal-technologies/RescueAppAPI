@@ -46,4 +46,4 @@ def single_post_view(request, post_id):
     except ValueError:
         raise Http404
 
-    return Response({'post': post}, 200)
+    return Response({'post': post})
