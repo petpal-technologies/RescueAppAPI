@@ -25,13 +25,6 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
     @csrf_exempt
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
-        # post = request.data.get('post')
-        # serializer = PostSerializer(data=post)
-        # if serializer.is_valid(raise_exception=True):
-        #     saved_post = serializer.save()
-        #     return Response({"success": "Post '{}' created successfully".format(saved_post.title)})
-        # else:
-        #     return Response({"failure": "Post failed"})
 
     def delete(self, request, pk):
         # Get object with this pk
