@@ -2,20 +2,23 @@
 
 {% block content %}
 
-    <ul>
-        <li>{{ post.title }}</li>
-        <li>{{ post.description }}</li>
-        <li>{{ post.lat }}</li>
-        <li>{{ post.long }}</li>
-    </ul>
+    <div class="container">
+        <ul>
+            <li>{{ post.title }}</li>
+            <li>{{ post.description }}</li>
+            <li>{{ post.lat }}</li>
+            <li>{{ post.long }}</li>
+        </ul>
 
 
 
 
-    <button>This is a dummy button, but download our app!</button>
+        <button>This is a dummy button, but download our app!</button>
 
-    <img src="/media/{{ post.image }}" style="height: 20%;width: 10%;">
+        <img src="/media/{{ post.image }}" style="height: 20%;width: 10%;">
 
+
+    </div>
 
 
 
