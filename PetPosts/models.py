@@ -19,7 +19,6 @@ class PetPost(models.Model):
     lat                  = models.FloatField()
     long                 = models.FloatField()
     image                = models.ImageField(upload_to=get_upload_to, null=True, blank=True)
-    description          = models.TextField()
     location_description = models.TextField()
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
