@@ -23,7 +23,8 @@ class PetPost(models.Model):
     created              = models.DateTimeField(auto_now=True)
     modified             = models.DateTimeField(auto_now_add=True)
     id                   = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
-
+    description          = models.TextField()
+    views                = models.IntegerField()
 
     def __str__(self):
         return self.title
