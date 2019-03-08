@@ -20,4 +20,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PetPost
-        fields = ('title', 'lat', 'long','image','location_description','created','modified','id','description','views')
+        fields = ('title', 'lat', 'long','image','location_description','created','modified','id','description','views','status')

@@ -25,6 +25,7 @@ class PetPost(models.Model):
     id                   = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     description          = models.TextField(default="description")
     views                = models.IntegerField(default=0)
+    status               = models.CharField(default="incomplete")
 
     def __str__(self):
         return self.title
