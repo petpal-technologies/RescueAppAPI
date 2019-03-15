@@ -12,7 +12,7 @@ from django.utils.decorators import method_decorator
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
+class PostView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.UpdateModelMixin):
     serializer_class = PostSerializer
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     queryset = PetPost.objects.all()
@@ -26,11 +26,18 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-    def delete(self, request, pk):
-        # Get object with this pk
-        post = get_object_or_404(PetPost.objects.all(), pk=pk)
-        post.delete()
-        return Response({"message": "Post with id `{}` has been deleted.".format(pk)}, status=204)
+    def delete(self, request, **kwargs):
+        PetPost.objects.delete(kwargs)
+        return Response({"message": "Post has been deleted."}, status=204)
+
+
+    def update(self, request, *args, **kwargs):
+        try:
+            PetPost.objects.update(kwargs)
+        except ValueError:
+            raise Http404
+
+
 
 
 def single_post_view(request, post_id):
