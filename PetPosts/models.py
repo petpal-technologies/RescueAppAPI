@@ -33,4 +33,4 @@ class PetPost(models.Model):
 
 
 
-    # for future, implement a replies class
+    # for future, implement a Replies class
