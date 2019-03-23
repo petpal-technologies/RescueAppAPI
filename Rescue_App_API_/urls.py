@@ -13,17 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-
 from django.conf.urls import url
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import routers
 from PetPosts import views as petView
-from Users import views
 from django.conf.urls.static import static
 from django.conf import settings
-
-
+from Comments import views
 
 router = routers.DefaultRouter()
 
@@ -44,6 +40,8 @@ urlpatterns = [
 
 
     url(r'^post/(?P<post_id>[0-9a-f-]+)/$', petView.single_post_view, name='single_post_view'),
+    url(r'comments', views.LoginView.as_view()),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
