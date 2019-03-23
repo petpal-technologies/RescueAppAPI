@@ -96,7 +96,7 @@ INSTALLED_APPS = [
     'PetPosts',
     'Users.apps.UsersConfig',
     'django.contrib.sites',
-    'Comments'
+    'Comments',
 ]
 
 SITE_ID = 1

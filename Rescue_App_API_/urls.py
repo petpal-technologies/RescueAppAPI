@@ -19,18 +19,17 @@ from rest_framework import routers
 from PetPosts import views as petView
 from django.conf.urls.static import static
 from django.conf import settings
-from Comments import views
+from Comments import views as commentView
+from Users import views as userView
+
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    # url('auth/login/', obtain_auth_token, name='api_token_auth'),
-    # url('accounts/', include('django.contrib.auth.urls')),
-    # url('^accounts/', include('allauth.urls')),
 
-    url('auth/login', views.auth_login),
-    url('auth/logout', views.auth_logout),
-    url('auth/signup', views.signup),
+    url('auth/login', userView.auth_login),
+    url('auth/logout', userView.auth_logout),
+    url('auth/signup', userView.signup),
 
 
     url('api/new_post', csrf_exempt(petView.PostView.as_view())),
@@ -40,7 +39,7 @@ urlpatterns = [
 
 
     url(r'^post/(?P<post_id>[0-9a-f-]+)/$', petView.single_post_view, name='single_post_view'),
-    url(r'comments', views.LoginView.as_view()),
+    url(r'comments', commentView.LoginView.as_view()),
 
 ]
 
