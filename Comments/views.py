@@ -11,12 +11,15 @@ from django.views.generic import View
 
 class LoginView(View):
     def post(self, request, *args, **kwargs):
+        return Response({"post_id": kwargs.get("post_id", None)})
+
+
         post = get_object_or_404(PetPost, id=kwargs.get("post_id", None))
-        return Response({"post_id": post.id})
         Comment.objects.create(post=post, text=kwargs.get("text"))
 
     def get(self, request):
         post = get_object_or_404(PetPost, id=request.GET['post_id'])
+        return Response({"post_id": post.id})
         comments = post.comments.all()
         serialized = CommentSerializer(comments, many=True)
         return Response({"comments": serialized.data})
