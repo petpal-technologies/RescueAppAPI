@@ -19,7 +19,7 @@ class CommentView(View):
         return JsonResponse({"success": True}, status=200)
 
     def get(self, request):
-        post = get_object_or_404(PetPost, id=request.GET.get('post_id'))
+        post = get_object_or_404(PetPost, id=request.GET['post_id'])
         comments = post.comments.all()
         serialized = CommentSerializer(comments, many=True)
-        return Response({"comments": serialized.data})
+        return JsonResponse({"comments": serialized.data}, status=200)

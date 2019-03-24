@@ -14,11 +14,6 @@ from . import models
 
 @csrf_exempt
 def auth_login(request):
-    """Client attempts to login
-
-     - Check for username and password
-     - Return serialized user data
-    """
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)

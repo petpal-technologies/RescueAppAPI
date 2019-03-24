@@ -9,10 +9,11 @@ from PetPosts.serializers import PostSerializer
 from django.shortcuts import get_object_or_404, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django.http import JsonResponse
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class PostView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.UpdateModelMixin):
+class PostView(generics.GenericAPIView, mixins.UpdateModelMixin):
     serializer_class = PostSerializer
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     queryset = PetPost.objects.all()
@@ -24,7 +25,8 @@ class PostView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.UpdateMo
 
     @csrf_exempt
     def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        post = PetPost.objects.create(kwargs)
+        return JsonResponse({"post": post},status=200)
 
     def delete(self, request, **kwargs):
         PetPost.objects.delete(kwargs)
