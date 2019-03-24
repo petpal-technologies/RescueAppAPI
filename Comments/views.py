@@ -12,6 +12,7 @@ from django.views.generic import View
 class LoginView(View):
     def post(self, request, *args, **kwargs):
         post = get_object_or_404(PetPost, id=kwargs.get("post_id", None))
+        return Response({"post_id": post.id})
         Comment.objects.create(post=post, text=kwargs.get("text"))
 
     def get(self, request):
