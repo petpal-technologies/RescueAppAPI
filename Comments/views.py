@@ -11,7 +11,7 @@ from django.views.generic import View
 
 class LoginView(View):
     def post(self, request, *args, **kwargs):
-        return Response({"post_id": kwargs.get("post_id", None)})
+        return Response(kwargs.get("post_id"))
 
 
         post = get_object_or_404(PetPost, id=kwargs.get("post_id", None))
