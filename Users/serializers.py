@@ -10,7 +10,7 @@ from . import models
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source='hash_id', read_only=True)
-    user_type = serializers.CharField(source="user_type")
+    user_type = serializers.CharField()
 
     class Meta:
         model = models.CustomUser
