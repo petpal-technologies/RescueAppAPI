@@ -39,7 +39,7 @@ urlpatterns = [
 
 
     url(r'^post/(?P<post_id>[0-9a-f-]+)/$', petView.single_post_view, name='single_post_view'),
-    url(r'comments', commentView.LoginView.as_view()),
+    url(r'comments', commentView.CommentView.as_view()),
 
 ]
 
