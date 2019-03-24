@@ -12,9 +12,9 @@ from django.contrib.auth import get_user_model
 
 
 class LoginView(View):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         post = get_object_or_404(PetPost, id=request.POST.get("post_id"))
-        author = get_object_or_404(get_user_model(), id=request.POST.get("author_id"))
+        author = get_object_or_404(get_user_model(), hash_id=request.POST.get("author_id"))
         Comment.objects.create(post=post, text=request.POST.get("text"), author=author)
 
     def get(self, request):
