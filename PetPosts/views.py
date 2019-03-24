@@ -25,11 +25,11 @@ class PostView(generics.GenericAPIView, mixins.UpdateModelMixin):
 
     @csrf_exempt
     def post(self, request, *args, **kwargs):
-        post = PetPost.objects.create(kwargs)
-        return JsonResponse({"post": post},status=200)
+        return self.create(request, *args, **kwargs)
 
-    def delete(self, request, **kwargs):
-        PetPost.objects.delete(kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        self.delete(request, *args, **kwargs)
         return Response({"message": "Post has been deleted."}, status=204)
 
 
