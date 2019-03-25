@@ -18,6 +18,7 @@ def auth_login(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
+    return JsonResponse(user)
 
     if user:
         login(request, user, backend=settings.AUTH_USER_MODEL)
