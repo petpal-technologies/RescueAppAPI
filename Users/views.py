@@ -35,7 +35,7 @@ def signup(request):
         login(request,user)
         serializer = serializers.UserSerializer(user)
     else:
-        u = models.CustomUser(username=request.POST['username'])
+        u = models.CustomUser(username=request.POST['username'], user_name=request.POST['user_name'])
         u.set_password(request.POST['password'])
         u.save()
         login(request, u)

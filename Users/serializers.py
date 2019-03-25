@@ -11,7 +11,8 @@ from . import models
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source='hash_id', read_only=True)
     user_type = serializers.CharField()
+    user_name = serializers.CharField()
 
     class Meta:
         model = models.CustomUser
-        fields = ('id', 'username', 'user_type')
+        fields = ('id', 'username', 'user_type', 'user_name')

@@ -9,6 +9,7 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateField(auto_now_add=True)
+    author_name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.text
