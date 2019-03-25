@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 
 from . import serializers
 from . import models
+from Rescue_App_API_ import settings
 
 
 @csrf_exempt
@@ -19,7 +20,7 @@ def auth_login(request):
     user = authenticate(username=username, password=password)
 
     if user:
-        login(request, user)
+        login(request, user, backend=settings.AUTH_USER_MODEL)
         serializer = serializers.UserSerializer(user)
         return JsonResponse(serializer.data)
     return HttpResponse(status=401)
@@ -32,13 +33,13 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        login(request,user)
+        login(request, user, backend=settings.AUTH_USER_MODEL)
         serializer = serializers.UserSerializer(user)
     else:
         u = models.CustomUser(username=request.POST['username'], user_name=request.POST['user_name'])
         u.set_password(request.POST['password'])
         u.save()
-        login(request, u)
+        login(request, u, backend=settings.AUTH_USER_MODEL)
         serializer = serializers.UserSerializer(u)
 
     return JsonResponse(serializer.data)
