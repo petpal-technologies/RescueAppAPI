@@ -13,7 +13,7 @@ from django.http import JsonResponse
 
 # Create your views here.
 @method_decorator(csrf_exempt, name='dispatch')
-class PostView(generics.GenericAPIView, mixins.UpdateModelMixin):
+class PostView(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.CreateModelMixin):
     serializer_class = PostSerializer
     parser_classes = (JSONParser, MultiPartParser, FormParser)
     queryset = PetPost.objects.all()
