@@ -18,7 +18,6 @@ def auth_login(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
-    # return JsonResponse(str(password), safe=False)
 
     if user:
         login(request, user, backend=settings.AUTH_USER_MODEL)
@@ -34,6 +33,8 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
+        if not user:
+            return HttpResponse(status=403)
         login(request, user, backend=settings.AUTH_USER_MODEL)
         serializer = serializers.UserSerializer(user)
     else:
