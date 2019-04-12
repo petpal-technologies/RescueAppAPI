@@ -42,7 +42,7 @@ class PostView(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.CreateMo
 
 
 
-def single_post_view(request, post_id):
+def single_post_view(post_id):
     try:
         post = get_object_or_404(PetPost, id=post_id)
     except ValueError:
