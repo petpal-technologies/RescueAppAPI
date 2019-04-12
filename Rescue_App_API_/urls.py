@@ -30,6 +30,7 @@ urlpatterns = [
     url('auth/login', userView.auth_login),
     url('auth/logout', userView.auth_logout),
     url('auth/signup', userView.signup),
+    url('auth/usernameExists', userView.username_exist),
 
 
     url('api/new_post', csrf_exempt(petView.PostView.as_view())),
@@ -40,6 +41,8 @@ urlpatterns = [
 
     url(r'^post/(?P<post_id>[0-9a-f-]+)/$', petView.single_post_view, name='single_post_view'),
     url(r'comments', commentView.CommentView.as_view()),
+
+    url('PetPalscouts/download')
 
 ]
 
