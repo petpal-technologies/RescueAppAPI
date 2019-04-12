@@ -44,6 +44,8 @@ urlpatterns = [
 
     url('PetPalscouts/download', petView.download_app_view, name="download_app_view"),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
