@@ -52,4 +52,4 @@ def single_post_view(post_id):
 
 
 def download_app_view(request):
-    return render_to_response('download.html')
+    return render_to_response('index.html')
