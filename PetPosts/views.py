@@ -51,5 +51,5 @@ def single_post_view(post_id):
     return render_to_response('single_post.html', {'post': post})
 
 
-def download_app_view():
+def download_app_view(request):
     return render_to_response('download.html')
