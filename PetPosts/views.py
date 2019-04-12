@@ -49,3 +49,7 @@ def single_post_view(post_id):
         raise Http404
 
     return render_to_response('single_post.html', {'post': post})
+
+
+def download_app_view():
+    return render_to_response('download.html')
