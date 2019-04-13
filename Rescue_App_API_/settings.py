@@ -18,8 +18,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATIC_URL = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = STATIC_URL
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(STATIC_ROOT, 'css/'),
+    os.path.join(STATIC_ROOT, 'js/'),
+    os.path.join(STATIC_ROOT, 'fonts/'),
+    os.path.join(STATIC_ROOT, 'admin/'),
+    os.path.join(STATIC_ROOT, 'scss/'),
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
