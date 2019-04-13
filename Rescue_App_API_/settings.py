@@ -28,7 +28,7 @@ STATIC_ROOT = STATIC_URL
 SECRET_KEY = 'm56l!yozsr-70eeb7trf-r7gl#+7zpoqb(3f2*66n=l%cgxay6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
