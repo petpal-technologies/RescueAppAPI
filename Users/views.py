@@ -33,7 +33,7 @@ def fbLogin(request):
     username = request.POST['username']
     user = authenticate(username=username)
     if not user:
-        return HttpResponse(status=403)
+        return JsonResponse(status=403)
     login(request, user, backend=settings.AUTH_USER_MODEL)
     serializer = serializers.UserSerializer(user)
     return JsonResponse(serializer.data)
