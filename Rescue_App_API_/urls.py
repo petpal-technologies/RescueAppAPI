@@ -43,7 +43,9 @@ urlpatterns = [
     url(r'^post/(?P<post_id>[0-9a-f-]+)/$', petView.single_post_view, name='single_post_view'),
     url(r'comments', commentView.CommentView.as_view()),
 
-    url('download', petView.download_app_view, name="download_app_view"),
+    url('download/', petView.download_app_view, name="download_app_view"),
+    url('', petView.download_app_view, name="download_app_view"),
+    url('PetPalscouts/download', petView.download_app_view, name="download_app_view"),
 
 ]
 
