@@ -53,3 +53,6 @@ def single_post_view(post_id):
 
 def download_app_view(request):
     return render_to_response('index.html')
+
+def contact_us(request):
+    return render_to_response("contact.html")
