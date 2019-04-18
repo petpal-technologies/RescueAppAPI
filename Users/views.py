@@ -46,8 +46,7 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        if request.POST['fb_user']==True:
-            # use our custom passwordless auth if the user is facebook
+        if request.POST['fb_user']:
             user = authenticate(username=username)
         else:
             user = authenticate(username=username, password=password)
@@ -70,6 +69,7 @@ def fbSignUp(request):
     # the only difference here is that a facebook user will just have an arbitrary password
     u.set_unusable_password()
     u.save()
+    user = authenticate(username=request.POST['username'])
     login(request, u, backend=settings.AUTH_USER_MODEL)
     serializer = serializers.UserSerializer(u)
     return JsonResponse(serializer.data)

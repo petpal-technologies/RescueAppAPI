@@ -1,6 +1,5 @@
 from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth.models import User
-
+from Users import models
 
 class PasswordlessAuthBackend(ModelBackend):
     """Log in to Django without providing a password.
@@ -9,12 +8,12 @@ class PasswordlessAuthBackend(ModelBackend):
     def authenticate(self, username=None):
         # whelp this is VERY INSECURE
         try:
-            return User.objects.get(username=username)
-        except User.DoesNotExist:
+            return models.CustomUser.objects.get(username=username)
+        except models.CustomUser.DoesNotExist:
             return None
 
     def get_user(self, user_id):
         try:
-            return User.objects.get(pk=user_id)
-        except User.DoesNotExist:
+            return models.CustomUser.objects.get(pk=user_id)
+        except models.CustomUser.DoesNotExist:
             return None
