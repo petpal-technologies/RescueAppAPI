@@ -17,7 +17,6 @@ def username_exist(request):
     if models.CustomUser.objects.filter(username=request.POST['username']).exists():
         return HttpResponse(status=200)
 
-
 @csrf_exempt
 def auth_login(request):
     username = request.POST['username']
