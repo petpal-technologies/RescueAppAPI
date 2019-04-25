@@ -34,6 +34,7 @@ urlpatterns = [
     url('auth/fbLogin', userView.fbLogin),
 
 
+
     url('api/new_post', csrf_exempt(petView.PostView.as_view())),
     url('api/delete', csrf_exempt(petView.PostView.as_view())),
     url('api/getPosts', csrf_exempt(petView.PostView.as_view())),
