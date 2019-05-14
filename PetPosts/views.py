@@ -22,13 +22,13 @@ class PostView(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.CreateMo
         serializer = PostSerializer(posts, many=True)
         return Response({"posts": serializer.data})
 
-    @csrf_exempt
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
 
-    def delete(self, request, *args, **kwargs):
-        self.delete(request, *args, **kwargs)
+    def delete(self, request):
+        id = request.POST['id']
+        PetPost.objects.filter(id=id).delete()
         return Response({"message": "Post has been deleted."}, status=204)
 
 
